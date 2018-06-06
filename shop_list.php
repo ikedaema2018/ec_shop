@@ -10,12 +10,28 @@ $view = "";
 if ($status = false) {
     $error = $stmt->errorinfo();
     exit("QueryError: " . $error[2]);
-} else {
+} else if ($_SESSION["kanri_flag"] == 1){
+  while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $view .= '
+<div class=" col-sm-4">
+  <div class="panel panel-default">
+  <div class="panel-heading h-20">' . $result["title"] . '<a href="update_view.php?id=' . $result["id"] . '" class=""></a><a href="delete.php?id=' . $result["id"] . '" class="glyphicon glyphicon-trash trash"></a></div>
+  <div class="panel-body h-100">
+    <img class="h250" src="' . $result["image"] . '" alt="">
+    <p class="artist">¥' . $result["price"] . '</p>
+    <a href="cart_insert.php?id=' . $result["id"] . '" class="btn btn-primary">カートに入れる</a>
+    </div>
+    </div>
+  </div>
+';
+}
+}
+  else {
     while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $view .= '
     <div class=" col-sm-4">
       <div class="panel panel-default">
-      <div class="panel-heading h-20">' . $result["title"] . '<a href="update_view.php?id=' . $result["id"] . '" class=""></a><a href="delete.php?id=' . $result["id"] . '" class="glyphicon glyphicon-trash trash"></a></div>
+      <div class="panel-heading h-20">' . $result["title"] . '<a href="update_view.php?id=' . $result["id"] . '" class=""></a><a class=""></a></div>
       <div class="panel-body h-100">
         <img class="h250" src="' . $result["image"] . '" alt="">
         <p class="artist">¥' . $result["price"] . '</p>

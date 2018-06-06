@@ -1,13 +1,52 @@
 <?php
 $url = $_POST["url"];
 
-require_once __DIR__ . '/vendor/autoload.php';
+
+
+//無限ループ
+// while (true) {
+//   try {
+//       //処理
+//       $crawler = $cli->request('GET',$url);
+
+
+//         $title = $crawler->filter('#landingImage')->extract('alt');
+// $img = $crawler->filter('#landingImage')->extract('data-old-hires');
+//         break;
+//   } catch (\Exception $e) {
+//       sleep(1);
+//   }
+// }
+
+$count = 0;
+$maxTries = 20;
+
+while (true) {
+    try {
+        // 処理
+        require_once __DIR__ . '/vendor/autoload.php';
 
 $cli = new Goutte\Client();
-$crawler = $cli->request('GET',$url);
+        $crawler = $cli->request('GET',$url);
 
-$title = $crawler->filter('#landingImage')->extract('alt');
+
+        $title = $crawler->filter('#landingImage')->extract('alt');
 $img = $crawler->filter('#landingImage')->extract('data-old-hires');
+        break;
+    } catch (\Exception $e) {
+        sleep(1);
+        if (++$count === $maxTries) {
+            // 例外処理
+ harder("Location: retry_product.php");
+            // $crawler = $cli->request('GET',$url);
+
+
+//         $title = $crawler->filter('#landingImage')->extract('alt');
+// $img = $crawler->filter('#landingImage')->extract('data-old-hires');
+            // harder("Location: product_act.php");
+        }
+    }
+}
 // $img = $crawler->filter('#landingImage')->attr('src');
 // var_dump($img);
 // $crawler->filter('img')->each(function ($node) {
@@ -17,6 +56,10 @@ $img = $crawler->filter('#landingImage')->extract('data-old-hires');
 // echo var_dump($aiu);
 $mana_title = $title[0];
 $mana_img = $img[0];
+
+if($mana_img ==""){
+  $mana_img = "./image/noimage.png";
+}
 // var_dump($price);
 
 // $aiu = $crawler->filter('title');

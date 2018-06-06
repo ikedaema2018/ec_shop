@@ -4,7 +4,13 @@ $id = $_SESSION["id"];
 include("funcs.php");
   loginCheck();
  
- 
+ //メール処理
+
+
+
+
+
+
 // date()で日時を出力
 $tttime = date("Y/m/d", strtotime("+2 day"));
   $pdo = nagiConnect();
@@ -20,6 +26,15 @@ $tttime = date("Y/m/d", strtotime("+2 day"));
       }
   
   }
+  $to = $result["mail"];
+$subject = "注文確定のお知らせ";
+$message = "";
+if (isset($_SESSION["item"])) {
+  for ($i = 0; $_SESSION["count"] > $i; $i++) {
+      $message .= $_SESSION["item"][$i];
+  }
+
+}
   $_SESSION = array();
 
 session_regenerate_id(true);
@@ -32,8 +47,21 @@ $_SESSION["chk_ssid"]  = session_id();
   $_SESSION["item"] = [];
   $_SESSION["amount"] = [];
   $_SESSION["shouhin_id"] = [];
+
+//メール処理
+$subject = "注文確定のお知らせ";
+$headers = "From:maedakei0817@gmail.com";
+
+
+
+
 //処理後、index.phpへリダイレクト
 // header("Location: login.php");
+mail($to, $subject, $message, $headers);
+// echo $subject;
+// echo $message;
+// echo $add_header;
+
   ?>
 
 
