@@ -13,6 +13,17 @@
   <title>商品登録ページ</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="shop_list.php">商品棚へ戻る</a>
+    
+          <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="itiran.php">スレッド一覧</a>
+            </li>
+             -->
+    
+          </ul>
+      </nav>
 
 <div class="container jumbotron  top-30r">
   <h1 class="display-5 border-bottom bottom-30">商品登録ページ</h1>

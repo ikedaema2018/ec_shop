@@ -28,7 +28,7 @@ for($i = 0; $i<$_SESSION["count"]; $i++){
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="shop_list.php">商品棚</a> 
+        <a class="navbar-brand" href="shop_list.php">商品棚へ戻る</a> 
         <a style="color:white;">
           <?php
           $goukei = 0;

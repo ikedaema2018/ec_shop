@@ -12,7 +12,7 @@
 
 function nagiConnect() {
   try {
-    $pdo = new PDO('mysql:dbname=ec_shop;charset=utf8;host=localhost','root','');
+    $pdo = new PDO('mysql:dbname=ikedaema0817_ec_db;charset=utf8;host=mysql718.db.sakura.ne.jp','ikedaema0817','pass1234');
   } catch (PDOException $e) {
     exit('DbConnectError:'.$e->getMessage());
   } return $pdo;

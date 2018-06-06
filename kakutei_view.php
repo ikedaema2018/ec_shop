@@ -57,10 +57,32 @@ $headers = "From:maedakei0817@gmail.com";
 
 //処理後、index.phpへリダイレクト
 // header("Location: login.php");
-mail($to, $subject, $message, $headers);
+mail($to, $subject, $message, $headers, '-f'.'.maedakei0817@gmail.com.');
+echo $message
 // echo $subject;
 // echo $message;
 // echo $add_header;
+
+// function mailsender($to,$subject,$body,$fromname,$fromaddress){
+//   //SMTP送信
+//   $mail = new Qdmail();
+//   $mail -> smtp(true);
+//   $param = array(
+//       'host'=>'（SMTPサーバー名）',
+//       'port'=> 587 ,
+//       'from'=>'（Return-Pathにはいるメールアドレス）',
+//       'protocol'=>'SMTP_AUTH',
+//       'user'=>'（SMTP認証ユーザー名）',
+//       'pass' => '（SMTP認証パスワード）',
+//   );
+//   $mail ->smtpServer($param);
+//   $mail ->to($to);
+//   $mail ->subject($subject);
+//   $mail ->from($fromaddress,$fromname);
+//   $mail ->text($body);
+//   $return_flag = $mail ->send();
+//   return $return_flag
+// }
 
   ?>
 
