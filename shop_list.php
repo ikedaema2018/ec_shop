@@ -15,7 +15,7 @@ if ($status = false) {
         $view .= '
     <div class=" col-sm-4">
       <div class="panel panel-default">
-      <div class="panel-heading h-20">' . $result["title"] . '<a href="update_view.php?id=' . $result["id"] . '" class="glyphicon glyphicon-pencil pencil"></a><a href="delete.php?id=' . $result["id"] . '" class="glyphicon glyphicon-trash trash"></a></div>
+      <div class="panel-heading h-20">' . $result["title"] . '<a href="update_view.php?id=' . $result["id"] . '" class=""></a><a href="delete.php?id=' . $result["id"] . '" class="glyphicon glyphicon-trash trash"></a></div>
       <div class="panel-body h-100">
         <img class="h250" src="' . $result["image"] . '" alt="">
         <p class="artist">¥' . $result["price"] . '</p>
